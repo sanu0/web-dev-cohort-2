@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="LoginForm" action="">
+        First name : <input type = "text" name="fname" value = "Donald"><br>
+        First name : <input type = "text" name="fname" value = "Duck"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p>Click the "Try it" buttton to display the number of elements in the form.</p>
+
+    <button onclick="myFunction()">Try it</button>
+    <button onclick="myCSSFunction()">Color it</button>
+    <p id="displayspace"></p>
+    <p class="demo"></p>
+    <div class="myDiv">
+        <p class="intro"></p>
+        <p class="intro"></p>
+        <p class="intro"></p>
+        <p class="intro"></p>
+    </div>
+
+    <script>
+        function myFunction(){
+            var x = document.getElementById("LoginForm").elements.length;
+            var y = document.getElementById("LoginForm").elements[0].value;
+
+            document.getElementById("displayspace").innerHTML = "Found" + x + " elements in the form."+ "first name entered is : " + y;
+            const para = document.createElement("p");
+            para.innerText = "This is a  paragraph created via DOM!";
+            document.body.appendChild(para);
+        }
+        function myCSSFunction(){
+            //Selecting all the tag for css manuplation using 
+            // var paragraph = document.querySelectorAll('p'); //using 'p.intro' as an argument we can also select specific html tag of tag-p and id intro and then use css in it as well.
+            // paragraph.forEach(paragraph => paragraph.style.backgroundColor = "blue");
+            
+            const nodeList = document.querySelectorAll("div > p");
+            for(let i=0;i < nodeList.length;i++){
+                nodeList[i].innerHTML = "Created new! Boom!"
+                if(i % 2 == 0){
+                    nodeList[i].style.backgroundColor = "red";
+                }
+            }
+        
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+mongoDB instance.txt
+node_modules
+Week-2/node_modules
+Week-5/Week-5.1/counter-app/node_modules
+Week-5\Week-5.1\new_Counter_App\Application_counter/node_modules
+Week-5\Week-5.2\ToDo app\backend\node_modules
+Week-5\Week-5.2\ToDo app\frontend\node_modules
+Week-6\Week-6.1\todo-App\node_modules
+Week-6\Week-6.1\todo-fetch\node_modules
+Week-6\Week-6.1\week-6-experiments\node_modules
+Week-6\Week-6.1\Wrapper-Component\node_modules
+Week-6\Week-6.2\use-Callback-hook\node_modules
+Week-6\Week-6.2\useMemo-hook\node_modules
+Week-6\Week-6.2\Week-6.2\node_modules
+Week-6\Week-6.3\React-Recap\node_modules
+Week-7\Assignments\project-2\node_modules
+Week-7\Week-7.1\prop-driling\node_modules
+Week-7\Week-7.1\Routing-React\node_modules
+Week-7\Week-7.2\Recoil\node_modules
+Week-7\Week-7.2\TodoApp-Recoil\node_modules
+Week-7\Week-7.4\7.4\7.4-async-queries\node_modules
+Week-7\Week-7.4\7.4\7.4-easy-bits\node_modules
+Week-7\Week-7.4\7.4\atom-family\node_modules
+Week-7\Week-7.4\7.4\loadables\node_modules
+Week-7\Week-7.4\7.4\selector-family\node_modules
+Week-8\Week-8.1\tailwind-prac\node_modules
+Week-8\Week-8.2\paytm\backend\node_modules
+Week-9\Week-9.1\Browser-func-hooks\node_modules
+Week-9\Week-9.1\custom-hooks\node_modules
+Week-9\Week-9.1\data-fetching-hook\node_modules
+Week-9\Week-9.2\ts_react\node_modules
+Week-10\Week-10.1\node_modules
+Week-10\Week-10.2\node_modules
+Week-11\Week - 11.1\Serverless Fns\hono-app\node_modules
+Week-11\Week - 11.1\Serverless Fns\my-app\node_modules

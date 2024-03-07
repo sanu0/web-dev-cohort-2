@@ -1,0 +1,63 @@
+<!--Throttling and debouncing.
+We in the prev assignment, using the button, sent the control to our js function
+and then we there fetch the response from the backend!
+But here what we want is that as soon as we write the numbers in the field
+The naddition must be shown simultaneously!-->
+
+<!--
+DEBOUNCING :
+
+Debouncing is a technique used in web development to ensure that time-consuming tasks do not fire so often, 
+making them more efficient and improving overall performance. It is commonly applied to events such as user input 
+(e.g., keypresses, mouse movements) or resize events.
+
+The primary goal of debouncing is to control the frequency with which a function is executed. When an event is 
+triggered, a debouncing mechanism will delay the execution of the associated function until a certain amount of 
+time has passed since the last time the event was fired. If the event is fired again within that time frame, 
+the timer is reset, and the countdown begins anew.
+
+So without debouncing, we were sending around 123 + 456 => 6 requests here
+let us improve it with debouncing.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalculateSum</title>
+</head>
+<body>
+    <input oninput="debouncePopulateDiv()" id = "firstNum" type="text" placeholder="First number"><br><br>
+    <input oninput="debouncePopulateDiv()" id = "secondNum" type="text" placeholder="Second number"><br><br>
+    <p id="finalSum"></p>
+
+    <script>
+        //once
+        let timeout;
+        function debouncePopulateDiv(){
+            //The job for this function is to call populateDiv function if 
+            //it is not been called for certain period of time say 100ms
+            //delay the call to populateDiv() untill i have not being called for 100ms
+            // and i have been called atleast once
+
+            //how do you cancel the clock as while the clock is running and 
+            //we again get debounce call then we have to cancel this
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){
+                populateDiv();
+            },1000)
+            
+
+
+        }
+        async function populateDiv(){
+            //debouncing and throtlling
+            const a = document.getElementById("firstNum").value;
+            const b = document.getElementById("secondNum").value;
+            const response = await fetch("http://localhost:3000/getSum?a="+a+"&&b="+b)
+            const ans = await response.text();
+            document.getElementById("finalSum").innerHTML = ans;
+        }
+    </script>
+</body>
+</html>

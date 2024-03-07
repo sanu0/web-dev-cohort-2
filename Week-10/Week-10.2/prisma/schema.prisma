@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://kumarsanu3703:M05nDohFxsAf@ep-super-unit-69849810.us-east-2.aws.neon.tech/test?sslmode=require"
+}
+//How to ceate a table using prisma
+//this is how we init or define schema in prisma
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  firstname String?   //?-> denotes that this feild is optional
+  lastName String?
+  password String
+}
+
+model Todo{
+  id Int @id @default(autoincrement())
+  title String
+  done Boolean @default(false)
+  description String?
+  userId Int
+}
+//Now whenever you migrate or change any thing in the schema or even for the first time aas well you have to run a command 
+// 'npx prisma migrate dev --name /(here you will write your commit msg like sentence/UderAndTodoAdded'
+//After that we have to generate the client which let us use the simple functions like User.create() or User.findOne() in our index.ts file.
+//It basically geerate a class names User which let us simplify the syntax in index.ts
+//command -> 'npx prisma generate'
+
+//These two things should be done on root folder not in prisma folder and these two things is must

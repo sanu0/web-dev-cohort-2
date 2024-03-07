@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonParent"></div>
+
+    <script>
+        let state = {
+            count : 0
+        }
+        function onButtonPress(){
+            state.count++;
+            buttonComponentReRender()
+        }
+        function buttonComponentReRender(){
+            document.getElementById("buttonParent").innerHTML = "";
+            const component = buttonComponent(state.count);
+            document.getElementById("buttonParent").appendChild(component);
+        }
+
+        function buttonComponent(count){//component taking state value as we have studied in theory
+            const button = document.createElement("button");
+            button.innerHTML = `Counter ${count}`;
+            button.setAttribute("onclick",'onButtonPress()');
+            return button;
+        }
+        buttonComponentReRender();
+        /**
+         * So in React you only need to write the changes your dynamic website will see. So in react you need to only write the onButtonPress() function as it
+         * Shows how the state is changing. Also you need to write the buttonComponent() function as it will show how the state will be rendered on the website, Its
+         * much easiear using react.
+         * Now the re rendering part is taken care by the react itself. Using the library.
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!--
+    -----------------document.createElement("tagname")---------------------
+    // create a new div element
+  >>const newDiv = document.createElement("div");
+
+  // and give it some content
+  >>const newContent = document.createTextNode("Hi there and greetings!");
+
+  // add the text node to the newly created div
+  >>newDiv.appendChild(newContent);
+
+  // add the newly created element and its content into the DOM
+  >>const currentDiv = document.getElementById("div1"); //Here div1 is the id of that html element .. from which we wanna insert our newdiv element before it!
+  >>document.body.insertBefore(newDiv, currentDiv);
+
+
+-----------------document.appendChild()---------------------
+
+const node = document.createElement("li");
+const textnode = document.createTextNode("Water");
+node.appendChild(textnode);
+document.getElementById("myList").appendChild(node);
+
+Before:         After:
+Coffee          Coffee
+Tea             Tea
+.                Water
+
+
+const node = document.getElementById("myList2").lastElementChild;
+document.getElementById("myList1").appendChild(node);
+
+Before:             After:
+
+Coffee               Coffee
+Tea                  Tea
+.                    Milk
+Water
+Milk                Water
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function addTodo(){
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            console.log(title);
+            console.log(description);
+            let originalHtml = document.getElementById("container").innerHTML;
+            document.getElementById("container").innerHTML = originalHtml + `
+                <div> 
+                    <div> ${title}</div>
+                    <div> ${description}</div>
+                    <button> Mark as done</button>
+                </div>
+
+            
+            `
+        }
+    </script>
+    
+    <div>
+        <input id="title" type="text" placeholder="title"> </input> <br><br>
+        <input id="description" type="text" placeholder="description"> </input> <br><br>
+        <button onclick="addTodo()">Add Todo</button><br><br>
+        <p id="container"></p>
+    </div>
+
+</body>
+</html>
