@@ -13,6 +13,23 @@ function useTodos(n){
 
   //Whenever you fetch something then for a split of a second we see some blank page as at that time the backend is taking time to send response
   //Wouldn't it be perfect if the user see some loader for that time!!! let us render this loader while the data get fetch.
+  //---------------------------------------------------------------------------------------------------
+
+  // useEffect(() => {
+  //   const val = setInterval(()=>{
+  //     axios.get("https://sum-server.100xdevs.com/todos")
+  //     .then(res => {
+  //       setTodos(res.data.todos);
+  //       setLoading(false);
+  //     })
+  //   } , []);
+  //return {todos, loading};
+
+  //This is enough to create a data fetching custom hook that fetches data and also has a loading which is shown till the dta is fetched!
+  //---------------------------------------------------------------------------------------------------
+
+  //----Auto refreshing hooks-----------------------
+
   useEffect(() => {
     const val = setInterval(()=>{
       axios.get("https://sum-server.100xdevs.com/todos")
@@ -22,12 +39,13 @@ function useTodos(n){
       })
     } , n*1000);
 
+    //so this code is for the starting time as you dont need to wait for n seconds at start.
     axios.get("https://sum-server.100xdevs.com/todos")
       .then(res => {
         setTodos(res.data.todos);
         setLoading(false);
       })
-      //This is to stopb to prev clock
+      //This is to stop to prev clock whenever the n changes so it is a cleanup function where u stop the old clocks.
       return ()=>{
         clearInterval(val);
       }
