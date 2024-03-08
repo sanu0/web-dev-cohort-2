@@ -3,6 +3,23 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+/**
+ * Install tsc/Typescript globally
+ * 
+ *    npm install -g typescript
+ * 
+ * Initialize an empty Node.js project with typrscript
+ * 
+ *    mkdir node-app
+ *    cd node-app
+ *    npm init -y
+ *    npx tsc --init
+ * 
+ *
+ */
+
+
+
 function App() {
   const [count, setCount] = useState(0)
 

@@ -1,7 +1,7 @@
 "use strict";
-// let x : number = 101;
-// //x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
-// console.log(x);
+let x = 101;
+//x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
+console.log(x);
 //------------------------------------------------------------
 // function Hello(str : string){
 //     console.log("hello " + str);
@@ -151,27 +151,100 @@ Should it be numbers? (1, 2, 3, 4) ?
 The best thing to use in such a case is an enum.
 */
 //type keyInput = "up" | "down" | "left" | "right";
-var direction;
-(function (direction) {
-    direction[direction["Up"] = 45] = "Up";
-    direction[direction["Down"] = 46] = "Down";
-    direction[direction["Left"] = 47] = "Left";
-    direction[direction["Right"] = 48] = "Right"; //48
-})(direction || (direction = {}));
-function doSomething(keyPressed) {
-    if (keyPressed == direction.Up) {
-        console.log("Up keu is pressed");
-    }
-}
+// enum direction{
+//     Up = 45,     //45  (0 is by deafult if not specifically initislised)
+//     Down,   //46
+//     Left,   //47
+//     Right   //48
+// }
+// function doSomething(keyPressed : direction){
+//     if(keyPressed == direction.Up){
+//         console.log("Up key is pressed");
+//     }
+// }
 //but what if the someone gives doSomething("downrandom")
 //This is not a key as you can see it can be solved in one way using "type"
 //Another way is to ue Enum
-doSomething(direction.Up);
-doSomething(direction.Left);
-console.log(direction.Up);
-console.log(direction.Down);
-console.log(direction.Left);
-console.log(direction.Right);
+// doSomething(direction.Up);
+// doSomething(direction.Left);
+/**
+console.log(direction.Up)
+console.log(direction.Down)
+console.log(direction.Left)
+console.log(direction.Right) */
 //This is better for feew reasons.. like you will get suggestions when u write direction and vscode will give u suggestions
 //So enum is preferred over type when it is known that there is a specific set of input to a function
 //It is more human readable
+//Common use case in express
+/**
+ * enum ResponseStatus {
+    Success = 200,
+    NotFound = 404,
+    Error = 500
+}
+
+app.get("/', (req, res) => {
+    if (!req.query.userId) {
+            res.status(ResponseStatus.Error).json({})
+    }
+    // and so on...
+        res.status(ResponseStatus.Success).json({});
+})
+ */
+//----------------------------------------------------------------------------------------------------
+//Generics
+// type Input = number | string;
+// function firstEl(arr : Input[]){
+//     return arr[0];
+// }
+// const value = firstEl(["Kumar","Sanu"]);
+// //console.log(value.toUpperCase());
+// /**So this is the error we get as .toUpperCase() method is only for the string type and not for number or Input type that we have created!
+//  * This is a problem but how can we fix it?
+// */
+// /**So this issue can be solved using Generics
+//  * Generics enables you to create components that work with any data type while still providing compile time type safety.
+// */
+// function identity<T>(arg: T): T {
+//     return arg;
+// }
+// //What T refers here is that this identity func can be called with any value 
+// let output1 = identity<string>("myString"); //Here it is called  with T set to Strings
+// let output2 = identity<number>(100); //Here it is called with T set to Number
+// output1.toLowerCase()
+// // It is like you can have created two variations of a function one with string input and other with number input.
+// //You can think of generics of making multiple variations of your function.
+// function getFirstElement<T>(arr: T[]) {
+//     return arr[0];
+// }
+// //const el = getFirstElement(["harkiratSingh", "22"]);
+// const el = getFirstElement<string>(["harkiratSingh", "22"]);
+// const el1 = getFirstElement<number>([1,2,3,4]);
+// const el2 = getFirstElement<boolean>([true, false]);
+// const el3 = getFirstElement<string | number>(["harkiratSingh", "22" ,1,2,3,34]);
+// //All of these will work without <string> or <string|number> as well as in that case generics will auto identify the types.
+// console.log(el.toLowerCase())
+//----------------------------------------------------------------------------------------------------
+//Better way to import and export modules
+//math.ts
+// export function add(x: number, y: number): number {
+//     return x + y;
+// }
+// export function subtract(x: number, y: number): number {
+//     return x - y;
+// }
+//main.ts
+// import { add } from /*"./math"*/
+// add(1, 2)
+//-----------------------------------------
+//Default exports
+//calculator.ts
+// export default class Calculator {
+//     add(x: number, y: number): number {
+//         return x + y;
+//     }
+// }
+//main.ts
+// import Calculator from './Calculator';
+// const calc = new Calculator();
+// console.log(calc.add(10, 5));

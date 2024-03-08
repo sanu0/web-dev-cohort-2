@@ -15,7 +15,7 @@
  * rootDir : "./src"
  * outDir : "./dist"
  * 
- * .gitignore consists of this dist foder and node modules as you never ppush these on github
+ * .gitignore consists of this dist folder and node modules as you never push these on github
  * ----------------------------------------------------------------------------------------------------------------------------------------------
  * noImplicitAny : true then you have to implicitely give the type otherwise you don't need to give the type implicitely
  * also we use this when we transition from js to ts

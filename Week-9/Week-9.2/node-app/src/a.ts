@@ -1,6 +1,6 @@
-// let x : number = 101;
-// //x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
-// console.log(x);
+let x : number = 101;
+//x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
+console.log(x);
 
 
 //------------------------------------------------------------
@@ -31,14 +31,14 @@
 //-------------------------------------------------------------
 // //Create a function that takes another function as an input and runs it after 1 seconds 
 
-//--------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------
 // function runAfter1sec(fn : ()=> void){
 //     setTimeout(fn , 1000);
 // }
 // runAfter1sec(function(){
 //     console.log("hi there")
 // })
-//---------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 //Interfaces
 
 //To assign types to the objects you need interfaces also with this you can use the same type in multiple places...
@@ -66,25 +66,33 @@
 //Implementing Interfaces
 //Interfaces have another special property . you can implement interface as class
 //-------------------------------------------------------------------------------------------------------------------------
-// interface Person{
-//     name : string;
-//     age : number;
-//     greet(phrase : string) : void;
-// }
+interface Person{
+    name : string;
+    age : number;
+    greet(phrase : string) : void;
+}
 
-// class Employee implements Person{
-//     name : string;
-//     age : number;
+class Employee implements Person{
+    name : string;
+    age : number;
 
-//     constructor(n : string, a : number){
-//         this.name = n;
-//         this.age = a;
-//     }
-//     greet(phrase : string){
-//         console.log(`${phrase} ${this.name}`);
-//     }
-// }
+    constructor(n : string, a : number){
+        this.name = n;
+        this.age = a;
+    }
+    greet(phrase : string){
+        console.log(`${phrase} ${this.name}`);
+    }
+}
+
+const e = new Employee("sanu" , 23);
+console.log(e.name);
 //-----------------------------------------------------------------------------------------------------------------------------
+
+/**What is the difference between interfaces and types 
+ * 
+ * ans - Interfaces can be extended to a class it acts like blueprint while types can be used for union and intersections
+ */
 //-------------------------------------------------------------------------------------------------------------------
 //Types
 
@@ -94,19 +102,19 @@
 //     age : number 
 // }
 // //type cannot be used to implement classes just like interfaces.
-// //it let us use some extra fufture as well
+// //it let us use some extra feature as well
 
-// //1. Union
+// //1. Union-----------------------------------------------------
 
-// type greetArg = number | string;
+// type greetArg = number | string;   //either a number or a string (types let you do that!)
 
 // function greet(id : greetArg){
 //     console.log(id);
 // }
-// greet(1);
-// greet("1");
+// greet(1);    //does work
+// greet("1");  //does work as well
 
-// // 2. Intersection
+// // 2. Intersection-----------------------------------------------
 
 // type Employee = {
 //     name: string;
@@ -178,22 +186,22 @@ The best thing to use in such a case is an enum.
 
 //type keyInput = "up" | "down" | "left" | "right";
 
-enum direction{
-    Up = 45,     //45  (0 is by deafult if not specifically initislised)
-    Down,   //46
-    Left,   //47
-    Right   //48
-}
-function doSomething(keyPressed : direction){
-    if(keyPressed == direction.Up){
-        console.log("Up key is pressed");
-    }
-}
+// enum direction{
+//     Up = 45,     //45  (0 is by deafult if not specifically initislised)
+//     Down,   //46
+//     Left,   //47
+//     Right   //48
+// }
+// function doSomething(keyPressed : direction){
+//     if(keyPressed == direction.Up){
+//         console.log("Up key is pressed");
+//     }
+// }
 //but what if the someone gives doSomething("downrandom")
 //This is not a key as you can see it can be solved in one way using "type"
 //Another way is to ue Enum
-doSomething(direction.Up);
-doSomething(direction.Left);
+// doSomething(direction.Up);
+// doSomething(direction.Left);
 /** 
 console.log(direction.Up)
 console.log(direction.Down) 
