@@ -1,6 +1,6 @@
-let x : number = 101;
-//x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
-console.log(x);
+// let x : number = 101;
+// //x = "harkirat"; //This wil give and error as x is typesafed and cant be asssigned to string as it is of type number.
+// console.log(x);
 
 
 //------------------------------------------------------------
@@ -66,27 +66,27 @@ console.log(x);
 //Implementing Interfaces
 //Interfaces have another special property . you can implement interface as class
 //-------------------------------------------------------------------------------------------------------------------------
-interface Person{
-    name : string;
-    age : number;
-    greet(phrase : string) : void;
-}
+// interface Person{
+//     name : string;
+//     age : number;
+//     greet(phrase : string) : void;
+// }
 
-class Employee implements Person{
-    name : string;
-    age : number;
+// class Employee implements Person{
+//     name : string;
+//     age : number;
 
-    constructor(n : string, a : number){
-        this.name = n;
-        this.age = a;
-    }
-    greet(phrase : string){
-        console.log(`${phrase} ${this.name}`);
-    }
-}
+//     constructor(n : string, a : number){
+//         this.name = n;
+//         this.age = a;
+//     }
+//     greet(phrase : string){
+//         console.log(`${phrase} ${this.name}`);
+//     }
+// }
 
-const e = new Employee("sanu" , 23);
-console.log(e.name);
+// const e = new Employee("sanu" , 23);
+// console.log(e.name);
 //-----------------------------------------------------------------------------------------------------------------------------
 
 /**What is the difference between interfaces and types 
@@ -197,9 +197,9 @@ The best thing to use in such a case is an enum.
 //         console.log("Up key is pressed");
 //     }
 // }
-//but what if the someone gives doSomething("downrandom")
-//This is not a key as you can see it can be solved in one way using "type"
-//Another way is to ue Enum
+// // but what if the someone gives doSomething("downrandom")
+// // This is not a key as you can see it can be solved in one way using "type"
+// // Another way is to ue Enum
 // doSomething(direction.Up);
 // doSomething(direction.Left);
 /** 
@@ -214,7 +214,7 @@ console.log(direction.Right) */
 //It is more human readable
 
 
-//Common use case in express
+//Common use case in express------------------------------------
 /**
  * enum ResponseStatus {
     Success = 200,
@@ -229,51 +229,53 @@ app.get("/', (req, res) => {
     // and so on...
 		res.status(ResponseStatus.Success).json({});
 })
+----------------------------------------------------------------
  */
 
-//----------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------
 
 //Generics
-// type Input = number | string;
-// function firstEl(arr : Input[]){
-//     return arr[0];
-// }
-// const value = firstEl(["Kumar","Sanu"]);
-// //console.log(value.toUpperCase());
-// /**So this is the error we get as .toUpperCase() method is only for the string type and not for number or Input type that we have created!
-//  * This is a problem but how can we fix it?
-// */
-// /**So this issue can be solved using Generics
-//  * Generics enables you to create components that work with any data type while still providing compile time type safety.
-// */
+type Input = number | string;
+function firstEl(arr : Input[]){
+    return arr[0];
+}
+const value = firstEl(["Kumar","Sanu"]);
+//console.log(value.toUpperCase());
+/**So this is the error we get as .toUpperCase() method is only for the string type and not for number or Input type that we have created!
+ * This is a problem but how can we fix it?
+*/
+/**So this issue can be solved using Generics
+ * Generics enables you to create components that work with any data type while still providing compile time type safety.
+*/
 
-// function identity<T>(arg: T): T {
-//     return arg;
-// }
-// //What T refers here is that this identity func can be called with any value 
+function identity<T>(arg: T): T {
+    return arg;
+}
+//What T refers here is that this identity func can be called with any value 
 
-// let output1 = identity<string>("myString"); //Here it is called  with T set to Strings
-// let output2 = identity<number>(100); //Here it is called with T set to Number
-// output1.toLowerCase()
+let output1 = identity<string>("myString"); //Here it is called  with T set to Strings
+let output2 = identity<number>(100); //Here it is called with T set to Number
+output1.toLowerCase()
+//output2.toLowerCase();
 
-// // It is like you can have created two variations of a function one with string input and other with number input.
-// //You can think of generics of making multiple variations of your function.
+// It is like you can have created two variations of a function one with string input and other with number input.
+//You can think of generics of making multiple variations of your function.
 
-// function getFirstElement<T>(arr: T[]) {
-//     return arr[0];
-// }
+function getFirstElement<T>(arr: T[]) : T {
+    return arr[0];
+}
 
-// //const el = getFirstElement(["harkiratSingh", "22"]);
-// const el = getFirstElement<string>(["harkiratSingh", "22"]);
-// const el1 = getFirstElement<number>([1,2,3,4]);
-// const el2 = getFirstElement<boolean>([true, false]);
-// const el3 = getFirstElement<string | number>(["harkiratSingh", "22" ,1,2,3,34]);
+//const el = getFirstElement(["harkiratSingh", "22"]);
+const el = getFirstElement<string>(["harkiratSingh", "22"]);
+const el1 = getFirstElement<number>([1,2,3,4]);
+const el2 = getFirstElement<boolean>([true, false]);
+const el3 = getFirstElement<string | number>(["harkiratSingh", "22" ,1,2,3,34]); //mixed bag
 
-// //All of these will work without <string> or <string|number> as well as in that case generics will auto identify the types.
+//All of these will work without <string> or <string|number> as well as in that case generics will auto identify the types.
 
-// console.log(el.toLowerCase())
+console.log(el.toLowerCase())
 
-//----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------
 
 //Better way to import and export modules
 

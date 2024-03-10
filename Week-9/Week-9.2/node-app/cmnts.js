@@ -20,3 +20,14 @@
  * noImplicitAny : true then you have to implicitely give the type otherwise you don't need to give the type implicitely
  * also we use this when we transition from js to ts
  */
+
+/**
+ * Installlation guide
+ * 
+ * npm install -g typescript
+ * 
+ * mkdir node-app
+ * cd node-app
+ * npm init -y
+ * npx tsc --init
+ */

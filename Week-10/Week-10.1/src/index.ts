@@ -19,10 +19,45 @@
 //     console.log(result)
 // }
 
-// createUsersTable();
+// createUsersTable();  
 
 //---------------------------------------Insert Data code but prone to sql injection-----------------------------------------------
 
+/**
+ * SQL injection is a type of cyber attack that occurs when an attacker inserts malicious SQL (Structured Query Language) code into input fields or
+ *  parameters used in an application's SQL query. SQL is a standard language used for managing and manipulating databases, and it is commonly employed 
+ * in web applications to interact with databases.
+
+  The primary goal of a SQL injection attack is to manipulate the SQL query in a way that it executes unintended commands, potentially allowing the 
+  attacker to access, modify, or delete data within the database. SQL injection vulnerabilities typically arise when user input is not properly validated 
+  or sanitized before being included in SQL queries.
+
+  Here's a simple example to illustrate how a SQL injection attack might occur. Consider a login form where the application checks for a user with the 
+  provided username and password:
+
+  Original SQL query:
+
+  sql
+  Copy code
+  SELECT * FROM users WHERE username = 'input_username' AND password = 'input_password';
+  An attacker could input something like this as the username:
+
+  sql
+  Copy code
+  ' OR '1'='1'; --
+  The modified query would look like this:
+
+  sql
+  Copy code
+  SELECT * FROM users WHERE username = '' OR '1'='1'; --' AND password = 'input_password';
+  In this example, the injected SQL code always evaluates to true ('1'='1' is always true), and the double dash (--) is used to comment out the 
+  rest of the original query, effectively bypassing the password check.
+
+  To prevent SQL injection attacks, developers should use parameterized queries or prepared statements, which ensure that user input is treated as data and 
+  not executable code. Additionally, input validation and proper authentication mechanisms are crucial in securing applications against such attacks.
+ */
+
+  
 // import { Client } from 'pg';
 
 // // Async function to insert data into a table

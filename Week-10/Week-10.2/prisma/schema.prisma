@@ -7,16 +7,54 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://kumarsanu3703:M05nDohFxsAf@ep-super-unit-69849810.us-east-2.aws.neon.tech/test?sslmode=require"
+  url      = env("DATABASE_URL")
 }
 //How to ceate a table using prisma
 //this is how we init or define schema in prisma
+
+//once you change the schema here than prisma will automatically create migration
+
+// In the context of databases, a migration refers to the process of making changes to the structure of a database, such as adding or modifying tables, 
+// columns, indexes, or relationships. Database migrations are essential for keeping the database schema in sync with the evolving needs of an application over time.
+
+// Here are some key points about database migrations:
+
+// Schema Evolution: As an application develops, the requirements for data storage may change. 
+// Migrations allow developers to make changes to the database schema without losing existing data or disrupting the application's functionality.
+
+// Types of Migrations:
+
+// Schema Migrations: These involve changes to the structure of the database, such as creating or altering tables, columns, and indexes.
+// Data Migrations: In some cases, it may be necessary to migrate existing data to conform to a new schema or to perform data clean-up operations.
+
+// Version Control: Database migrations are often version-controlled, just like application code. Developers create migration files that describe the changes to 
+// be applied to the database, and these files are tracked in version control systems. This ensures that the database schema can be reproduced at any point in time.
+
+// Migration Tools: Many database management systems provide tools or frameworks to facilitate the creation and execution of migrations. 
+// These tools often allow developers to write migration scripts in a specific language or use a domain-specific language to describe changes.
+
+// Consistency and Collaboration: Migrations help maintain consistency across development, testing, and production environments. 
+// They also facilitate collaboration among developers working on the same project by providing a systematic way to apply changes to the database.
+
+// Rollback Capability: Good migration tools and practices often include the ability to roll back changes. If a migration causes issues or needs to be reverted, 
+// the migration system should provide a way to undo the changes safely.
+
+// For example, if you were using a migration tool like Flyway or Django's migration system, you might have migration scripts that define changes to the database schema. 
+// These scripts are executed in a specific order, and the migration tool keeps track of which migrations have been applied. This helps ensure that every 
+// instance of the application using that database is working with the correct schema version.
+
+// In summary, database migrations are a crucial part of the development and maintenance of database-backed applications, 
+// providing a systematic and version-controlled approach to evolving the database schema over time.
+
+//prisma gives you automatic migrations
+
 model User {
   id Int @id @default(autoincrement())
   email String @unique
   firstname String?   //?-> denotes that this feild is optional
   lastName String?
   password String
+  phoneNumber String?
 }
 
 model Todo{
