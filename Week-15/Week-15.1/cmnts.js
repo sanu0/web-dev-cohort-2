@@ -143,4 +143,6 @@
     #all of the above code runs when you create an image and whatever you run afer CMD is what u run when you start the container.
 
     CMD ["node" , "dist/index.js"]
+
+    ----------------------------------------------
  */

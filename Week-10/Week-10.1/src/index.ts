@@ -118,7 +118,7 @@ import { Client } from 'pg';
 async function getUser(email: string) {
     
     const client = new Client({
-        connectionString: "postgresql://kumarsanu3703:M05nDohFxsAf@ep-super-unit-69849810.us-east-2.aws.neon.tech/test?sslmode=require"
+        connectionString: "your postgress url"
     })
 
 
